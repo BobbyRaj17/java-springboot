@@ -32,7 +32,7 @@ node{
     stage('Kube Deployment'){
         sh 'echo "kubectl apply -f ks8/java-deployment.yaml -n daytona"'
         // withCredentials([file(credentialsId: kubeconfid, variable: "kubeconf")]) {
-        sh 'echo "helm upgrade --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag},replicas=${args.replicas},cpu=${args.cpu},memory=${args.memory},ingress.hostname=${args.hostname} --namespace=${namespace}"'
+        // sh 'echo "helm upgrade --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag},replicas=${args.replicas},cpu=${args.cpu},memory=${args.memory},ingress.hostname=${args.hostname} --namespace=${namespace}"'
         // }
         }
 }
