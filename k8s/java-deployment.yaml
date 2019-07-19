@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-daytona-deployment
+  labels:
+    app: java-daytona
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-daytona
+  template:
+    metadata:
+      labels:
+        app: java-daytona
+    spec:
+      containers:
+      - name: java-daytona
+        image: bobbyraj007/springboot:daytona_v1
+        ports:
+        - containerPort: 8080
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: java-daytona-service
+spec:
+  selector:
+    app: java-daytona
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
