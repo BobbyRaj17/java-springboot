@@ -3,13 +3,13 @@ node{
         git url: 'https://github.com/BobbyRaj17/java-springboot.git'
     }
     stage('Maven build'){
-        sh 'echo mvn install'
+        sh 'echo mvn -B clean install'
     }
     stage('Docker Build & push') {
         sh 'echo docker build -t ${DOCKER_REGISTRY_URL}/${DOCKER_PROJECT_NAMESPACE}/${IMAGE_NAME}:${RELEASE_TAG} --build-arg APP_NAME=${IMAGE_NAME}  -f app/Dockerfile app/.'
         sh 'echo $DOCKER_PASSWD | docker login --username ${DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY_URL}'
-        sh 'docker push ${DOCKER_REGISTRY_URL}/${DOCKER_PROJECT_NAMESPACE}/${IMAGE_NAME}:${RELEASE_TAG}'
-        sh 'docker logout'
+        sh 'echo docker push ${DOCKER_REGISTRY_URL}/${DOCKER_PROJECT_NAMESPACE}/${IMAGE_NAME}:${RELEASE_TAG}'
+        sh 'echo docker logout'
                 // agent {
                 //     docker {
                 //       image 'docker:1.12.6'
