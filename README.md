@@ -33,3 +33,5 @@ The Environment Variables for the postman collection are:
 	"_postman_exported_at": "2019-07-19T03:08:53.517Z",
 	"_postman_exported_using": "Postman/6.7.4"
 }
+
+* Testing the pipeline
